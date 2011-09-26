@@ -169,7 +169,8 @@ class Autolink(object):
         matches = REGEXEN['valid_url'].finditer(self.text)
         for match in matches:
             full_url = match.group(2)
-            if match.group(3).find('http') == -1:
+            if (not full_url.startswith('http://') and
+                not full_url.startswith('https://')):
                 full_url = u'http://%s' % full_url
             display_url = full_url
             if len(display_url) > 30:
