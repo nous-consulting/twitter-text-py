@@ -169,10 +169,10 @@ class Autolink(object):
         matches = REGEXEN['valid_url'].finditer(self.text)
         for match in matches:
             full_url = match.group(2)
+            display_url = full_url
             if (not full_url.startswith('http://') and
                 not full_url.startswith('https://')):
                 full_url = u'http://%s' % full_url
-            display_url = full_url
             if len(display_url) > 30:
                 display_url = u'%s…' % display_url[0:30]
             _link = '%s<a href="%s"%s>%s</a>' % ( match.group(1), full_url, html_attrs, display_url )
